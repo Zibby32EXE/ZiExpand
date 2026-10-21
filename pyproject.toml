@@ -4,18 +4,19 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "ziexpand"
-version = "0.1.0"
-description = "ZiExpand - Easy Hacknet Extension building tool"
+version = "0.2.0"
+description = "ZiExpand - Easy Hacknet Extension building tool with CLI and GUI"
 readme = "README.md"
 requires-python = ">=3.8"
 license = {text = "MIT"}
 authors = [
     {name = "Zibby32EXE"}
 ]
-keywords = ["hacknet", "extension", "modding", "cli", "xml"]
+keywords = ["hacknet", "extension", "modding", "cli", "gui", "xml", "game"]
 classifiers = [
     "Development Status :: 4 - Beta",
     "Environment :: Console",
+    "Environment :: X11 Applications",
     "Intended Audience :: Developers",
     "License :: OSI Approved :: MIT License",
     "Programming Language :: Python :: 3",
