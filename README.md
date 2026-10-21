@@ -35,7 +35,13 @@ It provides both a **command-line interface** and a full **graphical UI**, scaff
 - Full feature parity for scripting and automation
 - Works great in CI or from the terminal
 
+### Standalone Windows `.exe`
+- Build a single-file executable that runs without installing Python
+- Double-click opens the GUI; CLI arguments still work
+
 ## Installation
+
+### Option A – Python package (any OS)
 
 ```bash
 pip install git+https://github.com/Zibby32EXE/ZiExpand.git
@@ -51,12 +57,57 @@ pip install -e .
 
 Requires **Python 3.8+**. The GUI needs Tkinter (included with most Python installations).
 
+### Option B – Windows executable (no Python needed)
+
+1. Download `ZiExpand.exe` from the [Releases](https://github.com/Zibby32EXE/ZiExpand/releases) page (when available), **or**
+2. Build it yourself (see below).
+
+Double-click `ZiExpand.exe` to open the GUI. You can also run it from a terminal with CLI arguments:
+
+```text
+ZiExpand.exe new MyExtension
+ZiExpand.exe gui
+ZiExpand.exe validate
+```
+
+## Building the Windows `.exe`
+
+### Easiest (Windows)
+
+1. Clone the repo and open a command prompt in the project folder.
+2. Double-click **`build.bat`** (or run it from cmd).
+3. When it finishes, the executable is at:
+
+```text
+dist\ZiExpand.exe
+```
+
+### Cross-platform / scripted
+
+```bash
+python build.py
+```
+
+This installs PyInstaller if needed and produces `dist/ZiExpand.exe` (Windows) or `dist/ZiExpand` (Linux/macOS).
+
+### Manual PyInstaller
+
+```bash
+pip install pyinstaller
+pyinstaller --noconfirm ziexpand.spec
+```
+
+### Automatic builds (GitHub Actions)
+
+The workflow `.github/workflows/build-exe.yml` builds the Windows executable on every version tag (`v*`) and on manual dispatch. The `.exe` is uploaded as an artifact and attached to the GitHub Release.
+
 ## Quick Start
 
 ### GUI (recommended for most users)
 
 ```bash
 ziexpand gui
+# or just double-click ZiExpand.exe
 ```
 
 Then use **File → New Extension…** or **Open Extension…** and start generating content from the **Generate** menu.
@@ -129,9 +180,9 @@ ZiExpand is a **builder’s assistant**, not a black-box generator. It removes t
 
 ## Requirements
 
-- Python 3.8+
-- Tkinter (for the GUI – standard with most Python builds)
-- No third-party packages required
+- **Python mode:** Python 3.8+ and Tkinter (standard with most Python builds)
+- **.exe mode:** Windows 10/11 – no Python required
+- No third-party packages required at runtime
 
 ## License
 
